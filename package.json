@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Slevin0087/frontend-project-12#readme",
   "dependencies": {
     "@hexlet/chat-server": "^2.0.4",
-    "lorem-ipsum": "^2.0.8",
-    "react-router-dom": "^7.6.1"
+    "lorem-ipsum": "^2.0.8"
   }
 }
