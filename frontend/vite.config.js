@@ -18,8 +18,8 @@ export default defineConfig({
         rewriteWsOrigin: true,
       },
     },
-    headers: {
-      "Content-Type": "text/javascript",
-    },
+    // headers: {
+    //   "Content-Type": "text/javascript",
+    // },
   },
 });
