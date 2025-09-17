@@ -1,20 +1,20 @@
 const namesLS = {
-  token: "token",
-  username: "username",
-};
+  token: 'token',
+  username: 'username',
+}
 
 const defaultValues = {
-  message: "",
-  channelName: "",
-};
+  message: '',
+  channelName: '',
+}
 
 const socketEvents = {
-  addNewChannel: "newChannel",
-  removeChannel: "removeChannel",
-  renameChannel: "renameChannel",
-  newMessage: "newMessage",
-  removeMessage: "removeMessage",
-  renameMessage: "renameMessage",
-};
+  addNewChannel: 'newChannel',
+  removeChannel: 'removeChannel',
+  renameChannel: 'renameChannel',
+  newMessage: 'newMessage',
+  removeMessage: 'removeMessage',
+  renameMessage: 'renameMessage',
+}
 
-export { namesLS, defaultValues, socketEvents };
+export { namesLS, defaultValues, socketEvents }

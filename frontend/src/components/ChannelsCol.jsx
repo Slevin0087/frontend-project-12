@@ -1,18 +1,18 @@
-import { useDispatch } from "react-redux";
-import { showAddNewChannel } from "../store/modalsSlice.js";
-import { useTranslation } from "react-i18next";
+import { useDispatch } from 'react-redux'
+import { showAddNewChannel } from '../store/modalsSlice.js'
+import { useTranslation } from 'react-i18next'
 
 function ChannelsCol() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const handleAddChannel = () => {
-    dispatch(showAddNewChannel());
-  };
+    dispatch(showAddNewChannel())
+  }
 
   return (
     <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
-      <b>{t("homepage.channels")}</b>
+      <b>{t('homepage.channels')}</b>
       <button
         onClick={() => handleAddChannel()}
         type="button"
@@ -32,7 +32,7 @@ function ChannelsCol() {
         <span className="visually-hidden">+</span>
       </button>
     </div>
-  );
+  )
 }
 
-export default ChannelsCol;
+export default ChannelsCol

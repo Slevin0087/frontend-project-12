@@ -1,9 +1,9 @@
-import avatar_1 from "../../assets/avatar_1.jpg";
-import SignupForm from "../SignupForm.jsx";
-import { useTranslation } from "react-i18next";
+import avatar_1 from '../../assets/avatar_1.jpg'
+import SignupForm from '../SignupForm.jsx'
+import { useTranslation } from 'react-i18next'
 
 function SignupPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
       <div className="container-fluid h-100">
@@ -15,8 +15,9 @@ function SignupPage() {
                   <img
                     src={avatar_1}
                     className="rounded-circle"
-                    alt={t("signupPage.signup")}
-                  ></img>
+                    alt={t('signupPage.signup')}
+                  >
+                  </img>
                 </div>
                 <SignupForm />
               </div>
@@ -25,7 +26,7 @@ function SignupPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default SignupPage;
+export default SignupPage
