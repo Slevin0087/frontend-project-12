@@ -21,17 +21,21 @@ const channelsSlice = createSlice({
       state.activeChannel = action.payload;
     },
     removeChannel: (state, action) => {
-      console.log("в removeChannel, action.payload: ", action.payload);
+      console.log("в removeChannel, state.modifiedChannel ", action.payload);
       const { id } = action.payload;
       state.channels = state.channels.filter((channel) => channel.id !== id);
       console.log("в removeChannel, state.channels: ", state.channels);
     },
-    renameChannel: (state, action) => {      
+    renameChannel: (state, action) => {
+      console.log("action.payload: ", action.payload);
+      console.log("state.modifiedChannel ДО: ", state.modifiedChannel);
       const newChannels = state.channels.map((channel) => {
-        if (channel.id === action.payload.id) return channel = action.payload;
+        if (channel.id === action.payload.id) return (channel = action.payload);
         return channel;
       });
       state.channels = newChannels;
+      state.modifiedChannel = action.payload;
+      console.log("state.modifiedChannel ПОСЛЕ:", state.modifiedChannel);
     },
     setModifiedChannel: (state, action) => {
       state.modifiedChannel = action.payload;

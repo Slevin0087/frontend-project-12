@@ -9,13 +9,14 @@ import { chatApi } from "../routes.js";
 import { defaultValues } from "../store/constans.js";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { RenameChannelValidationSchema } from "../validation.js";
+import { ChannelValidationSchema } from "../validation.js";
 import axios from "axios";
 
 function ModalRenameChannel() {
   const dispatch = useDispatch();
   const inputEl = useRef(null);
   const { token } = useSelector((state) => state.auth);
+  const channels = useSelector((state) => state.channels.channels);
   const modifiedChannel = useSelector(
     (state) => state.channels.modifiedChannel
   );
@@ -25,6 +26,8 @@ function ModalRenameChannel() {
 
   const [disabled, setDisabled] = useState(false);
 
+  const channelsNames = channels.map((channel) => channel.name);
+
   const { t } = useTranslation();
 
   const handleUnshow = () => {
@@ -33,7 +36,8 @@ function ModalRenameChannel() {
   };
 
   const initialValues = getFormInitialValues(formsNames.RENAME_CHANNEL_FORM);
-  const validationSchema = RenameChannelValidationSchema(t);
+  const validationSchema = ChannelValidationSchema(channelsNames, t);
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,

@@ -1,13 +1,14 @@
 import * as yup from "yup";
 
-const RenameChannelValidationSchema = (t) => {
+const ChannelValidationSchema = (channelsNames, t) => {
   return yup.object().shape({
     name: yup
       .string()
       .required(t("errors.required"))
       .min(3, t("errors.lengthRules"))
       .max(20, t("errors.lengthRules"))
-      .trim(),
+      .trim()
+      .notOneOf(channelsNames, t('errors.unique')),
   });
 };
 
@@ -30,4 +31,4 @@ const SignupValidationSchema = (t) => {
   });
 };
 
-export {SignupValidationSchema, RenameChannelValidationSchema};
+export {SignupValidationSchema, ChannelValidationSchema};

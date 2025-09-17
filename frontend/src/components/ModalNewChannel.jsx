@@ -8,15 +8,17 @@ import { chatApi } from "../routes.js";
 import { setActiveChannel } from "../store/channelsSlice.js";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import { ChannelValidationSchema } from "../validation.js";
 import axios from "axios";
 import filter from "../utils/leoProfanity.js";
 
 function ModalNewChannel() {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
-  const show = useSelector((state) => state.modals.addNewChannel.show);
   const [disabled, setDisabled] = useState(false);
   const { t } = useTranslation();
+  const show = useSelector((state) => state.modals.addNewChannel.show);
+  const channels = useSelector((state) => state.channels.channels);
   const inputEl = useRef(null);
   const notify = () => toast.success(t("notifications.created"));
   const handleUnshow = () => {
@@ -24,8 +26,14 @@ function ModalNewChannel() {
     dispatch(unshowAddNewChannel());
   };
 
+  const channelsNames = channels.map((channel) => channel.name);
+
+  const initialValues = getFormInitialValues(formsNames.ADDNEWCHANNEL_FORM);
+  const validationSchema = ChannelValidationSchema(channelsNames, t);
+
   const formik = useFormik({
-    initialValues: getFormInitialValues(formsNames.ADDNEWCHANNEL_FORM),
+    initialValues: initialValues,
+    validationSchema: validationSchema,
     onSubmit: async (values) => {
       setDisabled(true);
       try {
@@ -49,9 +57,9 @@ function ModalNewChannel() {
   });
 
   useEffect(() => {
-    if(show && inputEl.current) {      
-      return inputEl.current.focus()
-    };
+    if (show && inputEl.current) {
+      return inputEl.current.focus();
+    }
   }, [show]);
 
   return (
@@ -69,11 +77,14 @@ function ModalNewChannel() {
               className="mb-2 form-control"
               onChange={formik.handleChange}
               value={formik.values.name}
+              isInvalid={formik.errors.name}
             ></Form.Control>
             <Form.Label className="visually-hidden" htmlFor="name">
               {t("modals.newChannel.channelName")}
             </Form.Label>
-            <Form.Control.Feedback type="invalid" />
+            <Form.Control.Feedback type="invalid">
+              {formik.errors.name}
+            </Form.Control.Feedback>{" "}
             <div className="d-flex justify-content-end">
               <Button
                 type="button"

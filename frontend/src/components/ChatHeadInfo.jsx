@@ -2,6 +2,8 @@ function ChatHeadInfo(props) {
   console.log("КОМПОНЕНТ ChatHeadInfo");
 
   const { channel, count } = props;
+  console.log('channel: ', channel);
+  
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small">
       {channel && (
