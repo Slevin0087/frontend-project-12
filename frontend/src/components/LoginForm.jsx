@@ -39,7 +39,7 @@ function LoginFormComponent() {
       usernameInputRef.current.select()
       if (loginError.code === 'ERR_BAD_REQUEST') {
         setErrorValue(t('errors.incorrectPasswordOrUsername'))
-      } 
+      }
       else if (loginError.code === 'ERR_NETWORK') {
         setErrorValue(t('errors.network'))
       }

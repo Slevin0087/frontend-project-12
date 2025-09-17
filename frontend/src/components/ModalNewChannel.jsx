@@ -50,7 +50,7 @@ function ModalNewChannel() {
         dispatch(unshowAddNewChannel())
       }
       catch (error) {
-        console.error('neChannel failed:', error);
+        console.error('neChannel failed:', error)
       }
       finally {
         setDisabled(false)

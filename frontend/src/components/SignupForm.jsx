@@ -110,7 +110,7 @@ function SignupForm() {
             (formik.touched.confirmPassword
               && formik.errors.confirmPassword
               && formik.values.password)
-              || error
+            || error
           }
         />
         <Form.Label htmlFor="confirmPassword">
