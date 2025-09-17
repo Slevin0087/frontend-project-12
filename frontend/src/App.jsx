@@ -1,39 +1,68 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { clientRoutes } from "./routes.js";
+import NavbarComponent from "./components/NavbarComponent.jsx";
+import LoginPage from "./components/Pages/LoginPage.jsx";
+import SignupPage from "./components/Pages/SignupPage.jsx";
+import NotFoundPage from "./components/Pages/NotFoundPaje.jsx";
+import ChatPage from "./components/Pages/ChatPage.jsx";
 
-// function App() {
-//   const [count, setCount] = useState(0)
+function PrivateRoute({ children }) {
+  const token = useSelector((state) => state.auth.token);
+  console.log("в PrivateRoute: ", token);
 
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
+  return token ? children : <Navigate to={clientRoutes.login} />;
+}
+
+// import React from 'react';
+// import { Provider, ErrorBoundary } from '@rollbar/react'; // Provider imports 'rollbar'
+
+// const rollbarConfig = {
+//   accessToken: '440602d9c12c44e09a7ba6eb1306b863',
+//   environment: 'testenv',
+// };
+
+// function TestError() {
+//   const a = null;
+//   return a.hello();
 // }
 
-// export default App
+// Provider instantiates Rollbar client instance handling any uncaught errors or unhandled promises in the browser
+// ErrorBoundary catches all React errors in the tree below and logs them to Rollbar
+// export default function App() {
+//   return (
+//     <Provider config={rollbarConfig}>
+//       <ErrorBoundary>
+//         <TestError />
+//       </ErrorBoundary>
+//     </Provider>
+//   );
+// }
 
-const App = () => <h1>Hexlet Chat</h1>;
+const App = () => {
+  return (
+    <BrowserRouter>
+      <>
+        <div className="d-flex flex-column h-100">
+          <NavbarComponent />
+          <Routes>
+            <Route
+              path={clientRoutes.home}
+              element={
+                <PrivateRoute>
+                  <ChatPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path={clientRoutes.login} element={<LoginPage />} />
+            <Route path={clientRoutes.signup} element={<SignupPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <div className="Toastify"></div>
+      </>
+    </BrowserRouter>
+  );
+};
 
 export default App;
