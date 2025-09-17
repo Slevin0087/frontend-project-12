@@ -13,7 +13,6 @@ import RemovableChannel from "./RemovableChannel";
 import cn from "classnames";
 
 function ChannelsList() {
-
   const dispatch = useDispatch();
   const channels = useSelector((state) => state.channels.channels);
   const modifiedChannel = useSelector(
@@ -43,7 +42,10 @@ function ChannelsList() {
     socket.on(socketEvents.removeChannel, handleRemoveChannel);
     socket.on(socketEvents.renameChannel, handleRenameChannel);
     return () => {
-      socket.removeAllListeners();
+      // socket.removeAllListeners();
+      socket.off(socketEvents.addNewChannel, handleAddNewChannel);
+      socket.off(socketEvents.removeChannel, handleRemoveChannel);
+      socket.off(socketEvents.renameChannel, handleRenameChannel);
     };
   }, [channels, modifiedChannel, dispatch]);
 
