@@ -22,9 +22,11 @@ const App = () => {
             <Route
               path={clientRoutes.home}
               element={
-                (<PrivateRoute>
+                (
+                <PrivateRoute>
                   <ChatPage />
-                </PrivateRoute>)
+                </PrivateRoute>
+                )
               }
             />
             <Route path={clientRoutes.login} element={<LoginPage />} />

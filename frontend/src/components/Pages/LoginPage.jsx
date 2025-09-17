@@ -8,8 +8,8 @@ function LoginPageFooter() {
     <div className="card-footer p-4">
       <div className="text-center">
         <span>{t('loginPage.noAcc')}</span>
-          {' '}
-          <a href="/signup">{t("loginPage.signupNavigate")}</a>
+        {' '}
+        <a href="/signup">{t('loginPage.signupNavigate')}</a>
       </div>
     </div>
   )
@@ -28,8 +28,9 @@ function LoginPage() {
                   <img
                     src={avatar}
                     className="rounded-circle"
-                    alt={t("loginPage.login")}
-                  ></img>
+                    alt={t('loginPage.login')}
+                  >
+                  </img>
                 </div>
                 <FormComponent />
               </div>

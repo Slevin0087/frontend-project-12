@@ -40,9 +40,11 @@ function SignupForm() {
       setError(true)
       if (loginError.code === 'ERR_BAD_REQUEST') {
         setErrorValue(t('errors.userExist'))
-      } else if (loginError.code === 'ERR_NETWORK') {
+      }
+      else if (loginError.code === 'ERR_NETWORK') {
         setErrorValue(t('errors.network'))
-      } else setErrorValue(t('errors.unknown'))
+      }
+      else setErrorValue(t('errors.unknown'))
     }
   }, [loginStatus, loginError, navigate, t])
 
@@ -105,10 +107,10 @@ function SignupForm() {
           value={formik.values.confirmPassword}
           onBlur={formik.handleBlur}
           isInvalid={
-            (formik.touched.confirmPassword &&
-              formik.errors.confirmPassword &&
-              formik.values.password) ||
-            error
+            (formik.touched.confirmPassword
+              && formik.errors.confirmPassword
+              && formik.values.password)
+              || error
           }
         />
         <Form.Label htmlFor="confirmPassword">

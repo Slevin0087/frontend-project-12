@@ -18,9 +18,9 @@ function ModalRenameChannel() {
   const { token } = useSelector(state => state.auth)
   const channels = useSelector(state => state.channels.channels)
   const modifiedChannel = useSelector(
-    (state) => state.channels.modifiedChannel
+    state => state.channels.modifiedChannel,
   )
-  const notify = () => toast.success(t("notifications.renamed"))
+  const notify = () => toast.success(t('notifications.renamed'))
 
   const { show } = useSelector(state => state.modals.renameChannel)
 
@@ -53,9 +53,11 @@ function ModalRenameChannel() {
           headers(token),
         )
         notify()
-      } catch (error) {
+      }
+      catch (error) {
         console.error('rename failed:', error)
-      } finally {
+      }
+      finally {
         values.name = defaultValues.channelName
         setDisabled(false)
         dispatch(unshowRenameChannel())

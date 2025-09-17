@@ -25,7 +25,8 @@ function ChatPage() {
         const channels = await getData(chatApi.channels, token)
         dispatch(addChannels(channels))
         dispatch(setActiveChannel(channels[0]))
-      } catch (error) {
+      }
+      catch (error) {
         console.log(error)
       }
     }

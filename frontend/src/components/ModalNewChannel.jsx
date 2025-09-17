@@ -44,13 +44,15 @@ function ModalNewChannel() {
           chatApi.channels,
           newChannel,
           headers(token),
-        );
+        )
         notify()
         dispatch(setActiveChannel(response.data))
         dispatch(unshowAddNewChannel())
-      } catch (error) {
-        console.error("neChannel failed:", error);
-      } finally {
+      }
+      catch (error) {
+        console.error('neChannel failed:', error);
+      }
+      finally {
         setDisabled(false)
       }
     },
@@ -108,7 +110,7 @@ function ModalNewChannel() {
         </Form>
       </Modal.Body>
     </Modal>
-  );
+  )
 }
 
 export default ModalNewChannel

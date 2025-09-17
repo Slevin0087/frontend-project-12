@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { headers } from './helpers/helper'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { unshowRemoveChannel } from '../store/modalsSlice.js'
 import {
@@ -31,12 +31,14 @@ function ModalRemoveChannel() {
     try {
       await axios.delete(
         `${chatApi.channels}/${channel.id}`,
-        headers(token)
+        headers(token),
       )
       notify()
-    } catch (error) {
+    }
+    catch (error) {
       console.error('remove failed:', error)
-    } finally {
+    }
+    finally {
       dispatch(setModifiedChannel(null))
       dispatch(setActiveChannel(channels.channels[0]))
       setDisabled(false)

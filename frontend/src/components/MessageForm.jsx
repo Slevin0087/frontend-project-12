@@ -30,9 +30,11 @@ function MessageForm(props) {
           headers(token),
         )
         values.message = defaultValues.message
-      } catch (error) {
-        console.error("Message post failed:", error)
-      } finally {
+      }
+      catch (error) {
+        console.error('Message post failed:', error)
+      }
+      finally {
         setDisabled(false)
       }
     },

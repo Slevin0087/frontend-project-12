@@ -13,7 +13,8 @@ function NotFoundPage() {
       </img>
       <h1 className="h4 text-muted">{t('notFoundPage.notFound')}</h1>
       <p className="text-muted">
-        {t('notFoundPage.navigateToHome')}<a href="/">{t('notFoundPage.toHome')}</a>
+        {t('notFoundPage.navigateToHome')}
+        <a href="/">{t('notFoundPage.toHome')}</a>
       </p>
     </div>
   )

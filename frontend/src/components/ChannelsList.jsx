@@ -9,10 +9,10 @@ import {
 import { socketEvents } from '../store/constans'
 import socket from '../utils/socket'
 import RemovableChannel from './RemovableChannel'
-import cn from "classnames"
+import cn from 'classnames'
 
 function ChannelsList() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const channels = useSelector(state => state.channels.channels)
   const modifiedChannel = useSelector(
     state => state.channels.modifiedChannel,
@@ -62,7 +62,9 @@ function ChannelsList() {
 
         return (
           <li key={channel.id} className="nav-item w-100">
-            {channel.removable ? (
+            {
+            channel.removable ?
+            (
               <RemovableChannel
                 channel={channel}
                 isActiveChannel={isActiveChannel}

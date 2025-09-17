@@ -1,5 +1,5 @@
 function ChatHeadInfo(props) {
-  const { channel, count } = props;
+  const { channel, count } = props
 
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small">
@@ -12,7 +12,7 @@ function ChatHeadInfo(props) {
         </>
       )}
     </div>
-  );
+  )
 }
 
-export default ChatHeadInfo;
+export default ChatHeadInfo

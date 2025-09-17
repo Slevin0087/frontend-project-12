@@ -17,8 +17,8 @@ function LoginFormComponent() {
   const [error, setError] = useState(false)
   const [errorValue, setErrorValue] = useState(null)
 
-  const loginStatus = useSelector(state => state.auth.loginStatus);
-  const loginError = useSelector(state => state.auth.error);
+  const loginStatus = useSelector(state => state.auth.loginStatus)
+  const loginError = useSelector(state => state.auth.error)
 
   const { t } = useTranslation()
 
@@ -38,10 +38,12 @@ function LoginFormComponent() {
       setError(true)
       usernameInputRef.current.select()
       if (loginError.code === 'ERR_BAD_REQUEST') {
-        setErrorValue(t('errors.incorrectPasswordOrUsername'));
-      } else if (loginError.code === 'ERR_NETWORK') {
+        setErrorValue(t('errors.incorrectPasswordOrUsername'))
+      } 
+      else if (loginError.code === 'ERR_NETWORK') {
         setErrorValue(t('errors.network'))
-      } else setErrorValue(t('errors.unknown'))
+      }
+      else setErrorValue(t('errors.unknown'))
     }
   }, [loginStatus, loginError, navigate, t])
 
