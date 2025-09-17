@@ -23,9 +23,9 @@ const App = () => {
               path={clientRoutes.home}
               element={
                 (
-                <PrivateRoute>
-                  <ChatPage />
-                </PrivateRoute>
+                  <PrivateRoute>
+                    <ChatPage />
+                  </PrivateRoute>
                 )
               }
             />

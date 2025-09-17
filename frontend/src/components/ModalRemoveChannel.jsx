@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { headers } from './helpers/helper'
+import { headers } from '../helpers/helper.js'
 import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { unshowRemoveChannel } from '../store/modalsSlice.js'

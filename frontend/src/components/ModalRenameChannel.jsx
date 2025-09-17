@@ -1,7 +1,7 @@
 import { setModifiedChannel } from '../store/channelsSlice'
 import { useState, useRef, useEffect } from 'react'
 import { useFormik } from 'formik'
-import { formsNames, getFormInitialValues, headers } from './helpers/helper'
+import { formsNames, getFormInitialValues, headers } from '../helpers/helper.js'
 import { Button, Form, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { unshowRenameChannel } from '../store/modalsSlice.js'

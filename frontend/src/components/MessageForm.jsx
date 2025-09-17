@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useFormik } from 'formik'
 import { Button, Form } from 'react-bootstrap'
-import { formsNames, getFormInitialValues, headers } from './helpers/helper'
+import { formsNames, getFormInitialValues, headers } from '../helpers/helper.js'
 import { chatApi } from '../routes'
 import { useSelector } from 'react-redux'
 import { defaultValues } from '../store/constans.js'

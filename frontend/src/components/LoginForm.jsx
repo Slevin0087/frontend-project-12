@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useFormik } from 'formik'
 import { Button, Form } from 'react-bootstrap'
-import { formsNames, getFormInitialValues } from './helpers/helper'
+import { formsNames, getFormInitialValues } from '../helpers/helper.js'
 import { chatApi, clientRoutes } from '../routes'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
