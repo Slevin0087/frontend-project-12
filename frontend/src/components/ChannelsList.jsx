@@ -63,13 +63,13 @@ function ChannelsList() {
         return (
           <li key={channel.id} className="nav-item w-100">
             {channel.removable
-            ? (
-                <RemovableChannel
-                  channel={channel}
-                  isActiveChannel={isActiveChannel}
-                  handleSetActiveChannel={() => handleSetActiveChannel(channel)}
-                />
-              )
+              ? (
+                  <RemovableChannel
+                    channel={channel}
+                    isActiveChannel={isActiveChannel}
+                    handleSetActiveChannel={() => handleSetActiveChannel(channel)}
+                  />
+                )
               : (
                   <button
                     type="button"
@@ -79,8 +79,7 @@ function ChannelsList() {
                     <span className="me-1">#</span>
                     {channel.name}
                   </button>
-                )
-            }
+                )}
           </li>
         )
       })}
