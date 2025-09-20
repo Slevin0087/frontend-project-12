@@ -12,7 +12,7 @@ import axios from 'axios'
 function RemoveChannelBody() {
   const token = useSelector(state => state.auth.token)
   const channels = useSelector(state => state.channels.channels)
-
+  const modifiedChannel = useSelector(state => state.channels.modifiedChannel)
   const dispatch = useDispatch()
   const [disabled, setDisabled] = useState(false)
   const { t } = useTranslation()
@@ -29,7 +29,7 @@ function RemoveChannelBody() {
       console.error('remove failed:', error)
     } finally {
       dispatch(setModifiedChannel(null))
-      dispatch(setActiveChannel(channels.channels[0]))
+      dispatch(setActiveChannel(channels[0]))
       setDisabled(false)
       dispatch(unshowModalComponent())
     }
@@ -51,7 +51,7 @@ function RemoveChannelBody() {
           type="button"
           className="btn btn-danger"
           disabled={disabled}
-          onClick={() => handleRemove(channels.modifiedChannel)}
+          onClick={() => handleRemove(modifiedChannel)}
         >
           {t('modals.removeChannel.remove')}
         </Button>
