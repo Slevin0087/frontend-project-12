@@ -25,7 +25,7 @@ function NewChannelForm() {
   const inputEl = useRef(null)
   const show = useSelector((state) => state.modals.modalComponent.show)
   const channelsNames = channels.map((channel) => channel.name)
-  const notify = () => toast.success(t("notifications.renamed"))
+  const notify = () => toast.success(t("notifications.created"))
 
   const initialValues = getFormInitialValues(formsNames.ADDNEWCHANNEL_FORM)
   const validationSchema = channelValidationSchema(channelsNames, t)
