@@ -25,10 +25,10 @@ function RemoveChannelBody() {
     try {
       await axios.delete(`${chatApi.channels}/${channel.id}`, headers(token))
       notify()
-    } 
+    }
     catch (error) {
       console.error('remove failed:', error)
-    } 
+    }
     finally {
       dispatch(setModifiedChannel(null))
       dispatch(setActiveChannel(channels[0]))

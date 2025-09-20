@@ -30,7 +30,6 @@ function RenameChannelForm() {
   const channelsNames = channels.map(channel => channel.name)
   const notify = () => toast.success(t('notifications.renamed'))
 
-
   const initialValues = getFormInitialValues(formsNames.RENAME_CHANNEL_FORM)
   const validationSchema = channelValidationSchema(channelsNames, t)
 
@@ -51,10 +50,10 @@ function RenameChannelForm() {
           headers(token),
         )
         notify()
-      } 
+      }
       catch (error) {
         console.error('rename failed:', error)
-      } 
+      }
       finally {
         values.name = defaultValues.channelName
         setDisabled(false)
