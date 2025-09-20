@@ -17,24 +17,24 @@ import { chatApi } from '../../store/constans'
 import axios from 'axios'
 
 function RenameChannelForm() {
-    const token = useSelector(state => state.auth.token)
+  const token = useSelector(state => state.auth.token)
 
-      const channels = useSelector(state => state.channels.channels)
-      const modifiedChannel = useSelector(state => state.channels.modifiedChannel)
+  const channels = useSelector(state => state.channels.channels)
+  const modifiedChannel = useSelector(state => state.channels.modifiedChannel)
 
   const [disabled, setDisabled] = useState(false)
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const inputEl = useRef(null)
-  const show = useSelector((state) => state.modals.modalComponent.show)
-  const channelsNames = channels.map((channel) => channel.name)
+  const show = useSelector(state => state.modals.modalComponent.show)
+  const channelsNames = channels.map(channel => channel.name)
   const notify = () => toast.success(t('notifications.renamed'))
 
 
   const initialValues = getFormInitialValues(formsNames.RENAME_CHANNEL_FORM)
   const validationSchema = channelValidationSchema(channelsNames, t)
 
-const handleUnshow = () => dispatch(unshowModalComponent())
+  const handleUnshow = () => dispatch(unshowModalComponent())
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -48,12 +48,14 @@ const handleUnshow = () => dispatch(unshowModalComponent())
         await axios.patch(
           `${chatApi.channels}/${modifiedChannel.id}`,
           editedChannel,
-          headers(token)
+          headers(token),
         )
         notify()
-      } catch (error) {
+      } 
+      catch (error) {
         console.error('rename failed:', error)
-      } finally {
+      } 
+      finally {
         values.name = defaultValues.channelName
         setDisabled(false)
         handleUnshow()
@@ -63,7 +65,7 @@ const handleUnshow = () => dispatch(unshowModalComponent())
   })
 
   useEffect(() => {
-    if (show && inputEl.current) {        
+    if (show && inputEl.current) {
       inputEl.current.value = modifiedChannel?.name
       inputEl.current.focus()
       inputEl.current.select()
@@ -81,7 +83,8 @@ const handleUnshow = () => dispatch(unshowModalComponent())
           onChange={formik.handleChange}
           value={formik.values.name}
           isInvalid={formik.errors.name}
-        ></Form.Control>
+        >
+        </Form.Control>
         <Form.Label className="visually-hidden" htmlFor="name">
           Имя канала
         </Form.Label>

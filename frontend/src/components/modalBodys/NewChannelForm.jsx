@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import {
   formsNames,
   getFormInitialValues,
@@ -17,15 +17,15 @@ import axios from 'axios'
 import filter from '../../utils/leoProfanity'
 
 function NewChannelForm() {
-  const token = useSelector((state) => state.auth.token)
-  const channels = useSelector((state) => state.channels.channels)
+  const token = useSelector(state => state.auth.token)
+  const channels = useSelector(state => state.channels.channels)
   const [disabled, setDisabled] = useState(false)
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const inputEl = useRef(null)
-  const show = useSelector((state) => state.modals.modalComponent.show)
-  const channelsNames = channels.map((channel) => channel.name)
-  const notify = () => toast.success(t("notifications.created"))
+  const show = useSelector(state => state.modals.modalComponent.show)
+  const channelsNames = channels.map(channel => channel.name)
+  const notify = () => toast.success(t('notifications.created'))
 
   const initialValues = getFormInitialValues(formsNames.ADDNEWCHANNEL_FORM)
   const validationSchema = channelValidationSchema(channelsNames, t)
@@ -44,13 +44,15 @@ function NewChannelForm() {
         const response = await axios.post(
           chatApi.channels,
           newChannel,
-          headers(token)
+          headers(token),
         )
         notify()
         dispatch(setActiveChannel(response.data))
-      } catch (error) {
-        console.error("neChannel failed:", error)
-      } finally {
+      }
+      catch (error) {
+        console.error('neChannel failed:', error)
+      }
+      finally {
         setDisabled(false)
         dispatch(unshowModalComponent())
       }
@@ -74,13 +76,15 @@ function NewChannelForm() {
           onChange={formik.handleChange}
           value={formik.values.name}
           isInvalid={formik.errors.name}
-        ></Form.Control>
+        >
+        </Form.Control>
         <Form.Label className="visually-hidden" htmlFor="name">
           {t('modals.newChannel.channelName')}
         </Form.Label>
         <Form.Control.Feedback type="invalid">
           {formik.errors.name}
-        </Form.Control.Feedback>{" "}
+        </Form.Control.Feedback>
+        {' '}
         <div className="d-flex justify-content-end">
           <Button
             type="button"

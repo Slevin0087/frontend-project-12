@@ -10,7 +10,7 @@ function ModalComponent() {
   const modalBodyType = useSelector(state => state.modals.modalComponent.modalBodyType)
   const BodyComponent = modalsBody[modalBodyType]
   const handleUnshow = () => dispatch(unshowModalComponent())
-  
+
   return (
     <Modal show={show} centered>
       <Modal.Header className="btn" closeButton onClick={() => handleUnshow()}>
@@ -18,7 +18,7 @@ function ModalComponent() {
       </Modal.Header>
       <Modal.Body>
         {BodyComponent && <BodyComponent />}
-        </Modal.Body>
+      </Modal.Body>
     </Modal>
   )
 }

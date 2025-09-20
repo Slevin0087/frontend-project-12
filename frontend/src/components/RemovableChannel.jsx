@@ -18,7 +18,7 @@ function RemovableChannel(props) {
 
   const handleShowModal = (title, modalBodyType, channel) => {
     dispatch(setModifiedChannel(channel))
-    dispatch(showModalComponent({title, modalBodyType}))
+    dispatch(showModalComponent({ title, modalBodyType }))
   }
 
   return (

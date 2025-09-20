@@ -11,7 +11,6 @@ import ChannelsList from '../ChannelsList.jsx'
 import MessageCol from '../MessageCol.jsx'
 import ModalComponent from '../ModalComponent.jsx'
 
-
 function ChatPage() {
   const dispatch = useDispatch()
   const token = useSelector(state => state.auth.token)

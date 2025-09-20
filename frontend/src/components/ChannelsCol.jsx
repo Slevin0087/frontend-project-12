@@ -9,7 +9,7 @@ function ChannelsCol() {
   const { t } = useTranslation()
   const titleNewChannel = t('modals.newChannel.addChannel')
   const handleShowModal = () => {
-    dispatch(showModalComponent({title: titleNewChannel, modalBodyType: modalBodyType.add}))
+    dispatch(showModalComponent({ title: titleNewChannel, modalBodyType: modalBodyType.add }))
   }
 
   return (
