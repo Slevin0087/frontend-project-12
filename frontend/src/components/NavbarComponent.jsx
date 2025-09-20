@@ -1,7 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import ExitButton from './ExitButton'
-import { clientRoutes } from '../routes'
+import { clientRoutes } from '../store/constans'
 import { useDispatch, useSelector } from 'react-redux'
 import { userLogOut } from '../store/authSlice'
 import { useNavigate } from 'react-router-dom'

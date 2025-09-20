@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-const ChannelValidationSchema = (channelsNames, t) => {
+const channelValidationSchema = (channelsNames, t) => {
   return yup.object().shape({
     name: yup
       .string()
@@ -12,7 +12,7 @@ const ChannelValidationSchema = (channelsNames, t) => {
   })
 }
 
-const SignupValidationSchema = (t) => {
+const signupValidationSchema = (t) => {
   return yup.object().shape({
     username: yup
       .string()
@@ -31,4 +31,4 @@ const SignupValidationSchema = (t) => {
   })
 }
 
-export { SignupValidationSchema, ChannelValidationSchema }
+export { signupValidationSchema, channelValidationSchema }

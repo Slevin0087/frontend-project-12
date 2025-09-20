@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { clientRoutes } from './routes.js'
+import { clientRoutes } from './store/constans.js'
 import NavbarComponent from './components/NavbarComponent.jsx'
 import LoginPage from './components/Pages/LoginPage.jsx'
 import SignupPage from './components/Pages/SignupPage.jsx'

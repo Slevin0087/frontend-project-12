@@ -1,54 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  addNewChannel: {
+  modalComponent: {
     show: false,
+    title: '',
+    modalBodyType: null,
   },
-  removeChannel: {
-    show: false,
-  },
-  renameChannel: {
-    show: false,
-  },
-  currentChannel: null,
 }
 
 const modalsSlice = createSlice({
   name: 'modals',
   initialState,
   reducers: {
-    showAddNewChannel: (state) => {
-      state.addNewChannel.show = true
+    showModalComponent: (state, action) => {
+      state.modalComponent.show = true
+      state.modalComponent.title = action.payload.title
+      state.modalComponent.modalBodyType = action.payload.modalBodyType
     },
-    unshowAddNewChannel: (state) => {
-      state.addNewChannel.show = false
-    },
-    showRemoveChannel: (state) => {
-      state.removeChannel.show = true
-    },
-    unshowRemoveChannel: (state) => {
-      state.removeChannel.show = false
-    },
-    showRenameChannel: (state) => {
-      state.renameChannel.show = true
-    },
-    unshowRenameChannel: (state) => {
-      state.renameChannel.show = false
-    },
-    setCurrentChannel: (state, { payload }) => {
-      state.currentChannel = payload
+    unshowModalComponent: (state) => {
+      state.modalComponent.show = false
+      state.modalComponent.title = ''
+      state.modalComponent.modalBodyType = null
     },
   },
 })
 
 export const {
-  showAddNewChannel,
-  unshowAddNewChannel,
-  showRemoveChannel,
-  unshowRemoveChannel,
-  showRenameChannel,
-  unshowRenameChannel,
-  setCurrentChannel,
+  showModalComponent,
+  unshowModalComponent,
 } = modalsSlice.actions
 
 export default modalsSlice.reducer

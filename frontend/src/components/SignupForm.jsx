@@ -2,11 +2,11 @@ import { useEffect, useState, useRef } from 'react'
 import { useFormik } from 'formik'
 import { Button, Form } from 'react-bootstrap'
 import { formsNames, getFormInitialValues } from '../helpers/helper'
-import { SignupValidationSchema } from '../validation'
+import { signupValidationSchema } from '../validation'
 import { loginUser } from '../store/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { clientRoutes, chatApi } from '../routes'
+import { clientRoutes, chatApi } from '../store/constans'
 import { useTranslation } from 'react-i18next'
 
 function SignupForm() {
@@ -22,7 +22,7 @@ function SignupForm() {
   const { t } = useTranslation()
 
   const initialValues = getFormInitialValues(formsNames.SIGNUP_FORM)
-  const validationSchema = SignupValidationSchema(t)
+  const validationSchema = signupValidationSchema(t)
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -32,7 +32,6 @@ function SignupForm() {
       dispatch(loginUser(data))
     },
   })
-  console.log(formik.errors)
 
   useEffect(() => {
     if (loginStatus) navigate(clientRoutes.home)

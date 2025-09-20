@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
-import { chatApi } from '../../routes'
+import { chatApi } from '../../store/constans.js'
 import { addChannels, setActiveChannel } from '../../store/channelsSlice.js'
 import { getData } from '../../helpers/helper.js'
 import { ToastContainer } from 'react-toastify'
@@ -9,9 +9,8 @@ import { setLoginStatus } from '../../store/authSlice.js'
 import ChannelsCol from '../ChannelsCol.jsx'
 import ChannelsList from '../ChannelsList.jsx'
 import MessageCol from '../MessageCol.jsx'
-import ModalNewChannel from '../ModalNewChannel.jsx'
-import ModalRemoveChannel from '../ModalRemoveChannel.jsx'
-import ModalRenameChannel from '../ModalRenameChannel.jsx'
+import ModalComponent from '../ModalComponent.jsx'
+
 
 function ChatPage() {
   const dispatch = useDispatch()
@@ -47,9 +46,7 @@ function ChatPage() {
         <MessageCol />
       </Row>
       <ToastContainer />
-      <ModalNewChannel />
-      <ModalRemoveChannel />
-      <ModalRenameChannel />
+      <ModalComponent />
     </Container>
   )
 }

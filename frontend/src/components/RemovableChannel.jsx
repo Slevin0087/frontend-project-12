@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux'
 import { setModifiedChannel } from '../store/channelsSlice'
-import { showRemoveChannel, showRenameChannel } from '../store/modalsSlice'
+import { showModalComponent } from '../store/modalsSlice'
 import { useTranslation } from 'react-i18next'
+import { modalBodyType } from '../store/constans'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -10,9 +11,14 @@ function RemovableChannel(props) {
   const { channel, isActiveChannel, handleSetActiveChannel } = props
   const dispatch = useDispatch()
   const { t } = useTranslation()
-  const handleClick = (showModal, channel) => {
+  const titleRemoveChannel = t('modals.removeChannel.removeChannel')
+  const titleRenameChannel = t('modals.renameChannel.renameChannel')
+  const removeModalBodyType = modalBodyType.remove
+  const renameModalBodyType = modalBodyType.rename
+
+  const handleShowModal = (title, modalBodyType, channel) => {
     dispatch(setModifiedChannel(channel))
-    dispatch(showModal())
+    dispatch(showModalComponent({title, modalBodyType}))
   }
 
   return (
@@ -37,13 +43,13 @@ function RemovableChannel(props) {
       <Dropdown.Menu align="bottom">
         <Dropdown.Item
           href="#"
-          onClick={() => handleClick(showRemoveChannel, channel)}
+          onClick={() => handleShowModal(titleRemoveChannel, removeModalBodyType, channel)}
         >
           {t('controlChannel.remove')}
         </Dropdown.Item>
         <Dropdown.Item
           href="#"
-          onClick={() => handleClick(showRenameChannel, channel)}
+          onClick={() => handleShowModal(titleRenameChannel, renameModalBodyType, channel)}
         >
           {t('controlChannel.rename')}
         </Dropdown.Item>
