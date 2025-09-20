@@ -28,13 +28,13 @@ function RenameChannelForm() {
   const inputEl = useRef(null)
   const show = useSelector((state) => state.modals.modalComponent.show)
   const channelsNames = channels.map((channel) => channel.name)
-  const notify = () => toast.success(t('notifications.rename'))
+  const notify = () => toast.success(t('notifications.renamed'))
 
 
   const initialValues = getFormInitialValues(formsNames.RENAME_CHANNEL_FORM)
   const validationSchema = channelValidationSchema(channelsNames, t)
 
-      const handleUnshow = () => dispatch(unshowModalComponent())
+const handleUnshow = () => dispatch(unshowModalComponent())
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -96,10 +96,10 @@ function RenameChannelForm() {
             disabled={disabled}
             onClick={() => handleUnshow()}
           >
-            {t('modals.renameChannel.cance')}
+            {t('modals.renameChannel.cancel')}
           </Button>
           <Button type="submit" className="btn btn-primary" disabled={disabled}>
-            {t('modals.renameChannel.sen')}
+            {t('modals.renameChannel.send')}
           </Button>
         </div>
       </div>
