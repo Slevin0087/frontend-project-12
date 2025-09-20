@@ -33,7 +33,7 @@ const chatApi = {
 }
 
 const modalBodyType = {
-  add: "addChannel",
+  add: 'addChannel',
   remove: 'removeChannel',
   rename: 'renameChannel',
 }
