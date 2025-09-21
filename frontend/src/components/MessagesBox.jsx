@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { addOneMessage } from '../store/messagesSlice'
 import { socketEvents } from '../store/constans'
@@ -7,6 +7,7 @@ import socket from '../utils/socket'
 function MessagesBox(props) {
   const { messages } = props
   const dispatch = useDispatch()
+  const scrollRef = useRef(null)
 
   useEffect(() => {
     const handleNewMessage = (payload) => {
@@ -19,6 +20,10 @@ function MessagesBox(props) {
     }
   }, [dispatch])
 
+  useEffect(() => {
+    scrollRef.current.scrollIntoView({ behavior: 'instant' })
+  }, [messages])
+
   return (
     <div id="messages-box" className="chat-messages overflow-auto px-5 ">
       {messages.map((message) => {
@@ -29,6 +34,7 @@ function MessagesBox(props) {
           </div>
         )
       })}
+      <div ref={scrollRef} />
     </div>
   )
 }

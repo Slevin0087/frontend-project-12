@@ -55,6 +55,7 @@ function MessageForm(props) {
           placeholder={t('homepage.message')}
           onChange={formik.handleChange}
           value={formik.values.message}
+          autoComplete="off"
         />
 
         <Button

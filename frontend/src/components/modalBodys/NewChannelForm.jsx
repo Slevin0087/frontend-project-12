@@ -76,6 +76,7 @@ function NewChannelForm() {
           onChange={formik.handleChange}
           value={formik.values.name}
           isInvalid={formik.errors.name}
+          autoComplete="off"
         >
         </Form.Control>
         <Form.Label className="visually-hidden" htmlFor="name">

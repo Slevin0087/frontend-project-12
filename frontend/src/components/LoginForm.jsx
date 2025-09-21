@@ -61,7 +61,7 @@ function LoginFormComponent() {
         <Form.Control
           placeholder={t('loginPage.yourUsername')}
           name="username"
-          autoComplete="username"
+          autoComplete="off"
           required
           id="username"
           ref={usernameInputRef}
@@ -79,7 +79,7 @@ function LoginFormComponent() {
           placeholder={t('password')}
           name="password"
           type="password"
-          autoComplete="current-password"
+          autoComplete="off"
           required
           id="password"
           onChange={formik.handleChange}

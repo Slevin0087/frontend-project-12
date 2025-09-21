@@ -59,7 +59,7 @@ function SignupForm() {
         <Form.Control
           placeholder={t('errors.lengthRules')}
           name="username"
-          autoComplete="username"
+          autoComplete="off"
           required
           id="username"
           ref={usernameInputRef}
@@ -80,7 +80,7 @@ function SignupForm() {
           name="password"
           aria-describedby="passwordHelpBlock"
           required=""
-          autoComplete="new-password"
+          autoComplete="off"
           type="password"
           id="password"
           onChange={formik.handleChange}
@@ -99,7 +99,7 @@ function SignupForm() {
           placeholder={t('errors.passwordsMatch')}
           name="confirmPassword"
           required
-          autoComplete="new-password"
+          autoComplete="off"
           type="password"
           id="confirmPassword"
           onChange={formik.handleChange}
