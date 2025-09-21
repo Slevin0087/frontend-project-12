@@ -4,7 +4,7 @@
 
 # Chat Project
 
-[Chat](https://your-render-app-url.onrender.com)
+[Chat](https://frontend-project-12-dxui.onrender.com)
 
 ## Setup
 
